@@ -27,16 +27,18 @@ namespace _07_HW_GubinVS_2
         /// </summary>
         public int Index { get { return this.Index; } }
 
-    
+ 
 
 
 
         public void AddItemDB(DateTime data, string period, int cold, int hotter)
         {
+
+            this.dateBase = new List<DataFields>();
             this.dateBase.Add(
                 new DataFields() 
                 { 
-                    Date = data, 
+                    Date = Convert.ToDateTime(data), 
                     Period = period, 
                     Cold = cold, 
                     Hotter = hotter,       
@@ -44,7 +46,15 @@ namespace _07_HW_GubinVS_2
                     TotalHotter = hotter,
                 });
             
-            this.index++;
         }
+
+        public void Print()
+        {
+            
+        
+        
+        }
+
+
     }
 }

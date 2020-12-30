@@ -26,8 +26,14 @@ namespace _07_HW_GubinVS_2
         {
             string path = @"C:\07_HW_GubinVS\data.csv";
             //string path = Input();
-            Start();
+            //Start();
 
+            DataBase d = new DataBase();
+            d.AddItemDB(new DateTime (2020,01,01), "Январь", 11, 12);
+            d.Print();
+        
+
+            Console.ReadKey();
         }
 
 
