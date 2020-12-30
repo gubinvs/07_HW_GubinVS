@@ -26,9 +26,7 @@ namespace _07_HW_GubinVS_2
         {
             string path = @"C:\07_HW_GubinVS\data.csv";
             //string path = Input();
-
             Start();
-
 
         }
 
