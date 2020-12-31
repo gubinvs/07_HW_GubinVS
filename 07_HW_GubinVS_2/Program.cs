@@ -30,6 +30,9 @@ namespace _07_HW_GubinVS_2
 
             DataBase d = new DataBase();
             d.AddItemDB(new DateTime (2020,01,01), "Январь", 11, 12);
+            d.AddItemDB(new DateTime(2020, 02, 01), "Февраль", 15, 19);
+            d.AddItemDB(new DateTime(2020, 01, 01), "Март", 11, 12);
+            d.AddItemDB(new DateTime(2020, 02, 01), "Fghtkm", 15, 19);
             d.Print();
         
 
