@@ -17,35 +17,30 @@ namespace _07_HW_GubinVS_2
         private List<DataFields> dateBase;
 
         /// <summary>
-        /// Поле со значением количества записей в базе данных
-        /// </summary>
-        private int index;
-
-
-        /// <summary>
         /// Свойство получения значения поля Index
         /// </summary>
         public int Index { get { return this.Index; } }
 
-
+        public DataBase(string path)
+        {
+            this.dateBase= new List<DataFields>(3);
+        }
 
 
 
         public void AddItemDB(DateTime data, string period, int cold, int hotter)
         {
-            this.dateBase = new List<DataFields>();
             int count = dateBase.Count;
             int totalCold, totalHotter;
             if (count == 0)
             {
                 totalCold = cold;
                 totalHotter = hotter;
-                Console.WriteLine(count);
             }
             else
             {
-                totalCold = 0;
-                totalHotter = 0;
+                totalCold = cold - dateBase[count-1].Cold;
+                totalHotter = hotter - dateBase[count-1].Hotter;
             }
             
             this.dateBase.Add(
@@ -58,29 +53,18 @@ namespace _07_HW_GubinVS_2
                     TotalCold = totalCold,
                     TotalHotter = totalHotter,
                 });
-            
-            
         }
+
 
         public void Print()
         {
-            
-            //foreach (var item in this.dateBase)
-            //{
-            //    Console.Write($"{item.Date.ToString("d"),15} | {item.Period,15} | {item.Cold,15} | {item.Hotter,15} | " +
-            //        $"{item.TotalCold,15} | {item.TotalHotter,15} |"); 
-            //}
-
             for (int i = 0; i < dateBase.Count; i++)
             {
-                Console.Write($"{dateBase[i].Date.ToString("d"),15} | {dateBase[i].Period,15} | {dateBase[i].Cold,15} | " +
-                    $"{dateBase[i].Hotter,15} | " +
-                    $"{dateBase[i].TotalCold,15} | {dateBase[i].TotalHotter,15} |");
+                Console.Write(
+                    $"{dateBase[i].Date.ToString("d"),18} | {dateBase[i].Period,18} | {dateBase[i].Cold,18} | " +
+                    $"{dateBase[i].Hotter,18} | {dateBase[i].TotalCold,18} | {dateBase[i].TotalHotter,18} |\n");
+
             }
-        
-
         }
-
-
     }
 }

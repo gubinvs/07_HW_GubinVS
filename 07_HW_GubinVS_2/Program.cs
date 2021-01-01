@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace _07_HW_GubinVS_2
 {
@@ -27,13 +28,13 @@ namespace _07_HW_GubinVS_2
             string path = @"C:\07_HW_GubinVS\data.csv";
             //string path = Input();
             //Start();
-
-            DataBase d = new DataBase();
-            d.AddItemDB(new DateTime (2020,01,01), "Январь", 11, 12);
-            d.AddItemDB(new DateTime(2020, 02, 01), "Февраль", 15, 19);
-            d.AddItemDB(new DateTime(2020, 01, 01), "Март", 11, 12);
-            d.AddItemDB(new DateTime(2020, 02, 01), "Fghtkm", 15, 19);
-            d.Print();
+            Heading h = new Heading();
+            h.Print();
+            DataBase db = new DataBase(path);
+            db.AddItemDB(new DateTime(2020,01,01), "Январь", 11, 12);
+            db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
+            db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
+            db.Print();
         
 
             Console.ReadKey();

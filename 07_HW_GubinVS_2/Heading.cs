@@ -52,8 +52,7 @@ namespace _07_HW_GubinVS_2
         /// </summary>
         public void Print()
         {
-            Console.WriteLine($"||{hdata,18} ||{hperiod,18} ||{hcold,18} ||{hhotter,18} ||{htotalCold,18} ||{htotalHotter,18} ||");
-            //Console.WriteLine();
+            Console.WriteLine($"{hdata,18} | {hperiod,18} | {hcold,18} | {hhotter,18} | {htotalCold,18} | {htotalHotter,18} | ");
         }
 
         /// <summary>
@@ -61,8 +60,7 @@ namespace _07_HW_GubinVS_2
         /// </summary>
         public void PrintAdd()
         {
-            Console.WriteLine($"||{hdata,18} ||{hperiod,18} ||{hcold,18} ||{hhotter,18} ||");
-            //Console.WriteLine();
+            Console.WriteLine($"{hdata,18} | {hperiod,18} | {hcold,18} | {hhotter,18} | ");
         }
 
         #endregion Методы
