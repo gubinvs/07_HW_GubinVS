@@ -12,22 +12,28 @@ namespace _07_HW_GubinVS_2
     struct DataBase
     {
         /// <summary>
-        /// Список структур
+        /// Список структур DataFields
         /// </summary>
         private List<DataFields> dateBase;
 
-        /// <summary>
-        /// Свойство получения значения поля Index
-        /// </summary>
-        public int Index { get { return this.Index; } }
 
+        /// <summary>
+        /// Инициализация списка структур при создании экземпляра
+        /// </summary>
+        /// <param name="path">Путь к файлу с данными</param>
         public DataBase(string path)
         {
             this.dateBase= new List<DataFields>(3);
         }
 
 
-
+        /// <summary>
+        /// Метод добавления данных в список
+        /// </summary>
+        /// <param name="data">Дата записи</param>
+        /// <param name="period">Период за который подаются данные</param>
+        /// <param name="cold">Показания (ХВС)</param>
+        /// <param name="hotter">Показания (ГВС)</param>
         public void AddItemDB(DateTime data, string period, int cold, int hotter)
         {
             int count = dateBase.Count;
@@ -56,6 +62,10 @@ namespace _07_HW_GubinVS_2
         }
 
 
+
+        /// <summary>
+        /// Метод вывода данных списка структур в консоль
+        /// </summary>
         public void Print()
         {
             for (int i = 0; i < dateBase.Count; i++)
