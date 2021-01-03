@@ -25,27 +25,38 @@ namespace _07_HW_GubinVS_2
 
         static void Main(string[] args)
         {
-            string path = @"C:\07_HW_GubinVS\data.csv";
+            string path = @"C:\07_HW_GubinVS_2\data.csv";
             //string path = InputPath();
             //Start();
 
 
             // Вывод заголовка таблицы в консоль
             PrintHeading();
-            // Метод считывающий данные из файла (для того, чтобы показать что есть в базе)
 
-            // Метод предлагающий заполнить данные с консоли
-            
-
-
+            // Инициализация экземпляра базы данных
             DataBase db = new DataBase(path);
-            db.AddItemDBForArray(AddDataFromConsole());
+            db.AddItemDBFromFile(path);
+            // Метод считывающий данные из файла (для того, чтобы показать что есть в базе)
+            
+            
+            // Ввод данных в базу данных с консоли      
+            //db.AddItemDBForArray(AddDataFromConsole());
+
+           
+
+
+
+            
+            
             db.AddItemDB(new DateTime(2020, 01, 01), "Январь", 11, 12);
             db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
             db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
             db.Print();
 
 
+            // Запись обновленных данных в файл
+            File.Delete(path);
+            db.WriteFile(path);
             Console.ReadKey();
         }
 

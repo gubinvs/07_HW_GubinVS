@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace _07_HW_GubinVS_2
@@ -24,6 +25,73 @@ namespace _07_HW_GubinVS_2
         public DataBase(string path)
         {
             this.dateBase= new List<DataFields>(3);
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Метод считывает данные из файла и заполняет список структур данными считанными из файла
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        public void ReadFile(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                if (sr.Read() > -1)  // Проверка есть данные в файле или нет
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] args = sr.ReadLine().Split(',');
+                        AddItemDBFromFile(
+                            Convert.ToDateTime(args[0]),
+                            Convert.ToString(args[1]),
+                            Convert.ToInt32(args[2]),
+                            Convert.ToInt32(args[3]),
+                            Convert.ToInt32(args[4]),
+                            Convert.ToInt32(args[5])
+                            );
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Файл не содержит данных!");
+                }
+
+            }
+
+        }
+
+        /// <summary>
+        /// Создает поток для записии данных массива в текстовой файл
+        /// </summary>
+        /// <param name="path">Путь к файлу для записи данных полей</param>
+        public void WriteFile(string path)
+        {
+            using (StreamWriter sw = new StreamWriter(path, true))
+            {
+
+                for (int i = 0; i < dateBase.Count; i++)
+                {
+
+                    sw.Write(dateBase[i].Date.ToString("d"));
+                    sw.Write(",");
+                    sw.Write(dateBase[i].Period);
+                    sw.Write(",");
+                    sw.Write(dateBase[i].Cold);
+                    sw.Write(",");
+                    sw.Write(dateBase[i].Hotter);
+                    sw.Write(",");
+                    sw.Write(dateBase[i].TotalCold);
+                    sw.Write(",");
+                    sw.Write(dateBase[i].TotalHotter);
+                    sw.Write("\n");
+
+                }
+            }
         }
 
 
@@ -62,11 +130,6 @@ namespace _07_HW_GubinVS_2
         }
 
 
-
-
-
-
-
         /// <summary>
         /// Метод добавления данных в список
         /// </summary>
@@ -101,7 +164,27 @@ namespace _07_HW_GubinVS_2
                 });
         }
 
-
+        /// <summary>
+        /// Метод добавления данных в список
+        /// </summary>
+        /// <param name="data">Дата записи</param>
+        /// <param name="period">Период за который подаются данные</param>
+        /// <param name="cold">Показания (ХВС)</param>
+        /// <param name="hotter">Показания (ГВС)</param>
+        public void AddItemDBFromFile(DateTime data, string period, int cold, int hotter, int totalCold, int totalHotter)
+        {
+           
+            this.dateBase.Add(
+                new DataFields()
+                {
+                    Date = Convert.ToDateTime(data),
+                    Period = Convert.ToString(period),
+                    Cold = cold,
+                    Hotter = hotter,
+                    TotalCold = totalCold,
+                    TotalHotter = totalHotter,
+                });
+        }
 
         /// <summary>
         /// Метод вывода данных списка структур в консоль
