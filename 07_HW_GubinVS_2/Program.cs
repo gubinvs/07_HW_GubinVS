@@ -26,18 +26,64 @@ namespace _07_HW_GubinVS_2
         static void Main(string[] args)
         {
             string path = @"C:\07_HW_GubinVS\data.csv";
-            //string path = Input();
+            //string path = InputPath();
             //Start();
-            Heading h = new Heading();
-            h.Print();
+
+
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+            // Метод считывающий данные из файла (для того, чтобы показать что есть в базе)
+
+            // Метод предлагающий заполнить данные с консоли
+            
+
+
             DataBase db = new DataBase(path);
-            db.AddItemDB(new DateTime(2020,01,01), "Январь", 11, 12);
+            db.AddItemDBForArray(AddDataFromConsole());
+            db.AddItemDB(new DateTime(2020, 01, 01), "Январь", 11, 12);
             db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
             db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
             db.Print();
-        
+
 
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Метод сбора данных полей структуры из консоли, 
+        /// возвращает массив string
+        /// </summary>
+        private static string[] AddDataFromConsole()
+        {
+            Console.WriteLine("Введите дату подачи данных: в формате гггг, мм, дд");
+            string date = Console.ReadLine();
+
+            Console.WriteLine("Введите месяц за который подаются данные:");
+            string period = Console.ReadLine();
+
+            Console.WriteLine("Введите показания счетчика холодного водоснабжения (ХВС):");
+            string cold = Console.ReadLine();
+
+            Console.WriteLine("Введите показания счетчика горячего водоснабжения (ГВС):");
+            string hotter = Console.ReadLine();
+
+            string[] item = new string[] { date, period, cold, hotter };
+
+            return item;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Метод инициализирующий и выводящий заголовок полей таблицы в консоль
+        /// </summary>
+        private static void PrintHeading()
+        {
+            Heading heading = new Heading();
+            heading.Print();
         }
 
 
@@ -110,7 +156,7 @@ namespace _07_HW_GubinVS_2
         /// <summary>
         /// Метод получения пути к файлу, хранящему данные, из консоли
         /// </summary>
-        public static string Input()
+        public static string InputPath()
         {
             Console.WriteLine("Укажите полный путь к файлу c данными:");
             string path = Console.ReadLine();

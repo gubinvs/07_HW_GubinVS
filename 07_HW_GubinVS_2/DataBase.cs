@@ -28,6 +28,46 @@ namespace _07_HW_GubinVS_2
 
 
         /// <summary>
+        /// Метод заполнения структуры DataFields и добавление ее в список из принимаемого массива string[]
+        /// </summary>
+        /// <param name="array"></param>
+        public void AddItemDBForArray(string[] array)
+        {
+            int count = dateBase.Count;
+            int totalCold, totalHotter;
+            if (count == 0)
+            {
+                totalCold = Convert.ToInt32(array[2]);
+                totalHotter = Convert.ToInt32(array[3]);
+            }
+            else
+            {
+                totalCold = Convert.ToInt32(array[2]) - dateBase[count - 1].Cold;
+                totalHotter = Convert.ToInt32(array[2]) - dateBase[count - 1].Hotter;
+            }
+
+            this.dateBase.Add(
+                new DataFields()
+                {
+                    Date = Convert.ToDateTime(array[0]),
+                    Period = array[1],
+                    Cold = Convert.ToInt32(array[2]),
+                    Hotter = Convert.ToInt32(array[3]),
+                    TotalCold = totalCold,
+                    TotalHotter = totalHotter,
+                });
+
+
+
+        }
+
+
+
+
+
+
+
+        /// <summary>
         /// Метод добавления данных в список
         /// </summary>
         /// <param name="data">Дата записи</param>
