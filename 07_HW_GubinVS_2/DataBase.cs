@@ -29,7 +29,11 @@ namespace _07_HW_GubinVS_2
 
 
 
-
+        public void IndexOfff(DateTime item)
+        {
+            this.dateBase.IndexOf(new DataFields(),);
+        
+        }
 
         /// <summary>
         /// Метод считывает данные из файла и заполняет список структур данными считанными из файла
