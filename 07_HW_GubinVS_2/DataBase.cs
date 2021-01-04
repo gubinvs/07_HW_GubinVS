@@ -31,7 +31,36 @@ namespace _07_HW_GubinVS_2
 
 
 
+        /// <summary>
+        /// Метод считывает данные из файла и заполняет список структур данными считанными из файла
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        public void ReadFileSecond(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                if (sr.Read() > -1)  // Проверка есть данные в файле или нет
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] args = sr.ReadLine().Split(',');
+                        AddItemDB(
+                            Convert.ToDateTime(args[0]),
+                            Convert.ToString(args[1]),
+                            Convert.ToInt32(args[2]),
+                            Convert.ToInt32(args[3])
 
+                            );
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Файл не содержит данных!");
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// Метод считывает данные из файла и заполняет список структур данными считанными из файла

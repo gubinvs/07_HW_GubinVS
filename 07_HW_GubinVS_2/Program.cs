@@ -27,17 +27,12 @@ namespace _07_HW_GubinVS_2
         {
             string path = @"C:\07_HW_GubinVS_2\data.csv";
             //string path = InputPath();
-            Menu(path);
+
+            //Menu(path);
 
 
 
-
-
-            
-
-
-
-
+            //AddItemFromFile(path);
             //db.AddItemDB(new DateTime(2020, 01, 01), "Январь", 11, 12);
             //db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
             //db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
@@ -46,6 +41,26 @@ namespace _07_HW_GubinVS_2
 
 
             Console.ReadKey();
+        }
+
+        private static void AddItemFromFile(string path)
+        {
+            // Инициализация экземпляра структуры
+            DataBase db = new DataBase(path);
+
+            // Считывание данных из файла
+            db.ReadFile(path);
+
+            // Запрос на путь к файлу с данными
+            string path2 = InputPath();
+            db.ReadFileSecond(path2);
+
+            // Вывод обновленных данных в консоль
+            db.Print();
+
+            // Запись обновленных данных в файл
+            File.Delete(path);
+            db.WriteFile(path);
         }
 
 
@@ -144,33 +159,35 @@ namespace _07_HW_GubinVS_2
 
                     case 2:
                         #region Режим добавления данных из файла
-                    #endregion Режим добавления данных из файла
+                            AddItemFromFile(path);
+                        #endregion Режим добавления данных из файла
                         break;
                     case 3:
                         #region Режим редактирования данных
+                        
                         #endregion Режим редактирования данных
                         break;
                         
                     case 4:
                          #region Режим удаления последних данных
                     
-                    #endregion Режим удаления последних данных
+                         #endregion Режим удаления последних данных
                         break;
                     case 5:
                         #region Режим просмотра данных      
                     
-                    #endregion Режим просмотра данных   
+                        #endregion Режим просмотра данных   
                         break;
                     case 6:
                         #region Режим импортирования данных по выбранному диапазону дат
                     
-                    #endregion Режим импортирования данных по выбранному диапазону дат
+                        #endregion Режим импортирования данных по выбранному диапазону дат
                         break;
                     case 7:
                         #region Сортировка данных по выбранному полю
                     
             
-                    #endregion Сортировка данных по выбранному полю
+                        #endregion Сортировка данных по выбранному полю
                         break;
                     default:
                         Print("Команда не распознана!");
