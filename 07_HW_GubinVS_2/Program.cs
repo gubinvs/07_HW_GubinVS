@@ -27,38 +27,59 @@ namespace _07_HW_GubinVS_2
         {
             string path = @"C:\07_HW_GubinVS_2\data.csv";
             //string path = InputPath();
-            //Start();
+            Menu(path);
 
+
+
+
+
+            
+
+
+
+
+            //db.AddItemDB(new DateTime(2020, 01, 01), "Январь", 11, 12);
+            //db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
+            //db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
+            //db.Print();
+
+
+
+            Console.ReadKey();
+        }
+
+
+        /// <summary>
+        /// Реализация меню: Ввод данных в базу с консоли
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        private static void AddItemFromConsole(string path)
+        {
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
 
             // Вывод заголовка таблицы в консоль
             PrintHeading();
 
-            // Инициализация экземпляра базы данных
-            DataBase db = new DataBase(path);
-            db.AddItemDBFromFile(path);
-            // Метод считывающий данные из файла (для того, чтобы показать что есть в базе)
-            
-            
-            // Ввод данных в базу данных с консоли      
-            //db.AddItemDBForArray(AddDataFromConsole());
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
 
-           
-
-
-
-            
-            
-            db.AddItemDB(new DateTime(2020, 01, 01), "Январь", 11, 12);
-            db.AddItemDB(new DateTime(2020, 02, 04), "Февраль", 15, 19);
-            db.AddItemDB(new DateTime(2020, 03, 04), "Март", 20, 25);
+            // Вывод существующих данных в консоль
             db.Print();
 
+
+            // Ввод данных в базу из консоли 
+            db.AddItemDBForArray(AddDataFromConsole());
+
+            // Вывод обновленных данных в консоль
+            db.Print();
 
             // Запись обновленных данных в файл
             File.Delete(path);
             db.WriteFile(path);
-            Console.ReadKey();
         }
+
+
 
         /// <summary>
         /// Метод сбора данных полей структуры из консоли, 
@@ -84,10 +105,6 @@ namespace _07_HW_GubinVS_2
         }
 
 
-
-
-
-
         /// <summary>
         /// Метод инициализирующий и выводящий заголовок полей таблицы в консоль
         /// </summary>
@@ -101,11 +118,11 @@ namespace _07_HW_GubinVS_2
         /// <summary>
         /// Метод выполняющий бесконечный цикл, предлагая пользователю выбрать действие.
         /// </summary>
-        public static void Start()
+        public static void Menu(string path)
         {
             do
             {
-            Print("Необходимо выбрать режим работы:\n" +
+            Print("\n\n  Необходимо выбрать режим работы:\n" +
                 "1 - Добавить данные из консоли.\n" +
                 "2 - Добавить данные из файла.\n" +
                 "3 - Редактировать данные.\n" +
@@ -119,9 +136,10 @@ namespace _07_HW_GubinVS_2
                 {
 
                     case 1:
-                         #region Режим добавления данных из консоли
-                    
-                    #endregion Режим добавления данных из консоли
+                         
+                        #region Режим добавления данных из консоли
+                            AddItemFromConsole(path); 
+                        #endregion Режим добавления данных из консоли
                         break;
 
                     case 2:

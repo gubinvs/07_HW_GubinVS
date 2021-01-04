@@ -111,7 +111,7 @@ namespace _07_HW_GubinVS_2
             else
             {
                 totalCold = Convert.ToInt32(array[2]) - dateBase[count - 1].Cold;
-                totalHotter = Convert.ToInt32(array[2]) - dateBase[count - 1].Hotter;
+                totalHotter = Convert.ToInt32(array[3]) - dateBase[count - 1].Hotter;
             }
 
             this.dateBase.Add(
@@ -178,7 +178,7 @@ namespace _07_HW_GubinVS_2
                 new DataFields()
                 {
                     Date = Convert.ToDateTime(data),
-                    Period = Convert.ToString(period),
+                    Period = period,
                     Cold = cold,
                     Hotter = hotter,
                     TotalCold = totalCold,
