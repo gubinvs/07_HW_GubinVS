@@ -29,10 +29,14 @@ namespace _07_HW_GubinVS_2
 
 
 
-        public void IndexOfff(DateTime item)
+
+
+        public void IndexOf()
         {
-            this.dateBase.IndexOf(new DataFields(),);
-        
+           
+             int a = this.dateBase.IndexOf(new DataFields { Period = "Февраль" }); 
+             Console.WriteLine(a);
+         
         }
 
         /// <summary>

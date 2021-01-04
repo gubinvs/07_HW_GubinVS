@@ -49,7 +49,7 @@ namespace _07_HW_GubinVS_2
             Print("Введите дату записи для редактирования в формате: гггг,мм,дд");
             string index = "Январь";//Console.ReadLine();
             // Найти индекс записи по дате
-            IndexOf(db, string index);
+            db.IndexOf();
             // Перезаписать новыми данныим
             Print("Заполните новые данные");
             
