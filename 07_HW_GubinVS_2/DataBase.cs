@@ -33,9 +33,12 @@ namespace _07_HW_GubinVS_2
 
         public void IndexOf()
         {
+
            
-             int a = this.dateBase.IndexOf(new DataFields { Period = "Февраль" }); 
-             Console.WriteLine(a);
+            Console.WriteLine(
+                
+                 this.dateBase.FindIndex (x => x.Period.Contains("Март"))
+                );
          
         }
 
