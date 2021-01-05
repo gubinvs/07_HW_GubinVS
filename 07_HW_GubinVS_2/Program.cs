@@ -41,43 +41,7 @@ namespace _07_HW_GubinVS_2
 
 
 
-        /// <summary>
-        /// Редактирование данных по выбранному полю
-        /// </summary>
-        /// <param name="path">Путь к файлу</param>
-        private static void EditData(string path)
-        {
 
-            // Инициализация экземпляра структуры данных
-            DataBase db = new DataBase(path);
-
-            // Вывод заголовка таблицы в консоль
-            PrintHeading();
-
-            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
-            db.ReadFile(path);
-
-            // Вывод существующих данных в консоль
-            db.Print();
-
-            // Редактирование данных
-            Print("Введите период записи, который необходимо отредактировать");
-            string period = Console.ReadLine();
-            // Найти индекс записи по периоду
-            //Console.WriteLine(db.IndexOf(period));
-            // Перезаписать новыми данныим
-
-            Print("Заполните новые данные");
-            db.AddItemDBIndex(db.IndexOf(period), AddDataFromConsole());
-            db.RecalculateItem();
-
-            //Вывод обновленных данных в консоль
-            db.Print();
-
-            // Запись обновленных данных в файл
-            File.Delete(path);
-            db.WriteFile(path);
-        }
 
         /// <summary>
         /// Меню выполняющее бесконечный цикл, предлагая пользователю выбрать режим работы.
@@ -149,6 +113,44 @@ namespace _07_HW_GubinVS_2
 
 
         /// <summary>
+        /// Редактирование данных по выбранному полю
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        private static void EditData(string path)
+        {
+
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
+
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
+
+            // Вывод существующих данных в консоль
+            db.Print();
+
+            // Редактирование данных
+            Print("Введите период записи, который необходимо отредактировать");
+            string period = Console.ReadLine();
+            // Найти индекс записи по периоду
+            //Console.WriteLine(db.IndexOf(period));
+            // Перезаписать новыми данныим
+
+            Print("Заполните новые данные");
+            db.AddItemDBIndex(db.IndexOf(period), AddDataFromConsole());
+            db.RecalculateItem();
+
+            //Вывод обновленных данных в консоль
+            db.Print();
+
+            // Запись обновленных данных в файл
+            File.Delete(path);
+            db.WriteFile(path);
+        }
+
+        /// <summary>
         /// Реализация меню: Добавление данных считанных из файла
         /// </summary>
         /// <param name="path"></param>
@@ -202,7 +204,6 @@ namespace _07_HW_GubinVS_2
             File.Delete(path);
             db.WriteFile(path);
         }
-
 
 
         /// <summary>
