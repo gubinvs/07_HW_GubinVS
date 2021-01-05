@@ -29,17 +29,57 @@ namespace _07_HW_GubinVS_2
 
 
 
-
-
-        public void IndexOf()
+        /// <summary>
+        /// Метод вставляет элементы списка по указанному индексу
+        /// принимает индекс и массив данных
+        /// </summary>
+        /// <param name="index">Индекс</param>
+        /// <param name="array">Массив данных</param>
+        public void AddItemDBIndex(int index, string[] array)
         {
 
-           
-            Console.WriteLine(
-                
-                 this.dateBase.FindIndex (x => x.Period.Contains("Март"))
-                );
-         
+            //int count = dateBase.Count;
+            int totalCold, totalHotter;
+            if (index == 0)
+            {
+                totalCold = Convert.ToInt32(array[2]);
+                totalHotter = Convert.ToInt32(array[3]);
+            }
+            else
+            {
+                totalCold = Convert.ToInt32(array[2]) - dateBase[index - 1].Cold;
+                totalHotter = Convert.ToInt32(array[3]) - dateBase[index - 1].Hotter;
+            }
+
+            // Удаление выбранного элемента списка по индексу
+            this.dateBase.RemoveAt(index);
+
+            // Заполнение удаленного элемента новыми данными
+            this.dateBase.Insert(index,
+                new DataFields()
+                {
+                    Date = Convert.ToDateTime(array[0]),
+                    Period = array[1],
+                    Cold = Convert.ToInt32(array[2]),
+                    Hotter = Convert.ToInt32(array[3]),
+                    TotalCold = totalCold,
+                    TotalHotter = totalHotter,
+                });
+
+
+
+
+        }
+
+        /// <summary>
+        /// Метод принимает значение, ищет первое вхождение в структуре и возвращает индекс
+        /// элемента списка в котором имеется первое соответствие искомому элементу
+        /// </summary>
+        /// <param name="item">Искомый элемент</param>
+        /// <returns></returns>
+        public int IndexOf(string item)
+        {
+           return this.dateBase.FindIndex(x => x.Period.Contains(item));
         }
 
         /// <summary>
