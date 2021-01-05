@@ -31,6 +31,20 @@ namespace _07_HW_GubinVS_2
             //Menu(path);
 
 
+            
+
+            Console.ReadKey();
+        }
+
+
+
+
+        /// <summary>
+        /// Редактирование данных по выбранному полю
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        private static void EditData(string path)
+        {
 
             // Инициализация экземпляра структуры данных
             DataBase db = new DataBase(path);
@@ -44,42 +58,23 @@ namespace _07_HW_GubinVS_2
             // Вывод существующих данных в консоль
             db.Print();
 
-
             // Редактирование данных
             Print("Введите период записи, который необходимо отредактировать");
-            string period = "Март";  //Console.ReadLine();
+            string period = Console.ReadLine();
             // Найти индекс записи по периоду
-            Console.WriteLine(db.IndexOf(period));
+            //Console.WriteLine(db.IndexOf(period));
             // Перезаписать новыми данныим
-            
+
             Print("Заполните новые данные");
             db.AddItemDBIndex(db.IndexOf(period), AddDataFromConsole());
-
-            ///После замены элемента и его данных потребление расчитывается не верно
-            /// необходимо решить этот вопрос.
-
-
-
-
-
-
-
-
+            db.RecalculateItem();
 
             //Вывод обновленных данных в консоль
             db.Print();
 
-            //// Запись обновленных данных в файл
-            //File.Delete(path);
-            //db.WriteFile(path);
-
-
-
-
-
-
-
-            Console.ReadKey();
+            // Запись обновленных данных в файл
+            File.Delete(path);
+            db.WriteFile(path);
         }
 
         /// <summary>
@@ -105,18 +100,18 @@ namespace _07_HW_GubinVS_2
                     case 1:
 
                         #region Режим добавления данных из консоли
-                        AddItemFromConsole(path);
+                            AddItemFromConsole(path);
                         #endregion Режим добавления данных из консоли
                         break;
 
                     case 2:
                         #region Режим добавления данных из файла
-                        AddItemFromFile(path);
+                            AddItemFromFile(path);
                         #endregion Режим добавления данных из файла
                         break;
                     case 3:
                         #region Режим редактирования данных
-
+                            EditData(path);
                         #endregion Режим редактирования данных
                         break;
 

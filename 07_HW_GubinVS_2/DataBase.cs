@@ -29,6 +29,11 @@ namespace _07_HW_GubinVS_2
 
 
 
+
+
+
+
+
         /// <summary>
         /// Метод вставляет элементы списка по указанному индексу
         /// принимает индекс и массив данных
@@ -37,8 +42,6 @@ namespace _07_HW_GubinVS_2
         /// <param name="array">Массив данных</param>
         public void AddItemDBIndex(int index, string[] array)
         {
-
-            //int count = dateBase.Count;
             int totalCold, totalHotter;
             if (index == 0)
             {
@@ -65,10 +68,6 @@ namespace _07_HW_GubinVS_2
                     TotalCold = totalCold,
                     TotalHotter = totalHotter,
                 });
-
-
-
-
         }
 
         /// <summary>
@@ -81,6 +80,54 @@ namespace _07_HW_GubinVS_2
         {
            return this.dateBase.FindIndex(x => x.Period.Contains(item));
         }
+
+
+        /// <summary>
+        /// Метод перерасчета данных о потреблении 
+        /// </summary>
+        public void RecalculateItem()
+        {
+            // Определяет количество элементов в базе данных
+            int count = dateBase.Count;
+            int totalCold, totalHotter;
+            // Инициализация массива структуры
+            DataFields[] array = new DataFields[count];
+            // Копирование данных списка в массив структуры
+            this.dateBase.CopyTo(array);
+            // Очистка базы данных
+            this.dateBase.Clear();
+
+            // Заполнение базы скопированными данными
+            for (int i = 0; i < count; i++)
+            {
+                if (i==0)
+                {
+                    totalCold = array[i].Cold;
+                    totalHotter = array[i].Hotter;
+
+                }
+                else
+                {
+                    totalCold = array[i].Cold - array[i-1].Cold;
+                    totalHotter = array[i].Hotter - array[i-1].Hotter;
+                }
+
+                this.dateBase.Add(
+
+                    new DataFields()
+                    {
+                        Date = array[i].Date,
+                        Period = array[i].Period,
+                        Cold = array[i].Cold,
+                        Hotter = array[i].Hotter,
+                        TotalCold = totalCold,
+                        TotalHotter = totalHotter
+
+                    }
+                    );
+            }
+        }
+
 
         /// <summary>
         /// Метод считывает данные из файла и заполняет список структур данными считанными из файла
