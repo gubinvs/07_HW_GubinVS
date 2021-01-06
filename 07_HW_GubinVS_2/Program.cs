@@ -32,8 +32,45 @@ namespace _07_HW_GubinVS_2
 
             // режим удаления данных
 
+            // RemoveData()
 
-            
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
+
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
+
+            // Вывод существующих данных в консоль
+            db.Print();
+
+            // Редактирование данных
+            Print("Введите период записи, который необходимо удалить");
+            string period = Console.ReadLine();
+            // Найти индекс записи по периоду
+            //Console.WriteLine(db.IndexOf(period));
+
+            // Удаление элемента списка по выбранному индексу
+            db.RemoveItem(db.IndexOf(period));
+           
+            // Перерасчет элементов потребления
+            db.RecalculateItem();
+
+            //Вывод обновленных данных в консоль
+            Print("Обновленные данные:");
+            db.Print();
+
+            // Запись обновленных данных в файл
+            //File.Delete(path);
+            //db.WriteFile(path);
+
+
+
+
+
+
 
             Console.ReadKey();
         }

@@ -30,8 +30,22 @@ namespace _07_HW_GubinVS_2
 
 
 
-
-
+        /// <summary>
+        /// Метод удаления элемента списка по принимаемому индексу
+        /// </summary>
+        /// <param name="index">Индекс элемента для удаления</param>
+        public void RemoveItem(int index)
+        {
+            if (index < 0)
+            {
+                Console.WriteLine("Выбранного периода нет в базе данных");
+            }
+            else
+            {
+                this.dateBase.RemoveAt(index);
+            }
+         
+        }
 
 
         /// <summary>
