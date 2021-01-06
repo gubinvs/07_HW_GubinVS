@@ -35,8 +35,8 @@ namespace _07_HW_GubinVS_2
         /// <summary>
         /// Метод принимающий диапазон дат и удаляет все элементы списка не входящий в данный диапазон
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="item2"></param>
+        /// <param name="item">Верхняя граница диапазона дат</param>
+        /// <param name="item2">Нижняя граница диапазона дат</param>
         public void Export(string item, string item2)
         {
 
