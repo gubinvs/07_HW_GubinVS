@@ -39,24 +39,11 @@ namespace _07_HW_GubinVS_2
         /// <param name="item2"></param>
         public void Export(DateTime item, DateTime item2)
         {
-            int count = this.dateBase.Count;
-
-            for (int i = 0; i < count; i++)
-            {
-                if ()
-                {
-
-                }
 
 
+            this.dateBase.FindIndex(x => x.Date. (item) );
 
-            }
             
-
-
-
-
-
 
 
             
