@@ -30,6 +30,38 @@ namespace _07_HW_GubinVS_2
 
 
 
+
+
+        /// <summary>
+        /// Метод принимающий диапазон дат и удаляет все элементы списка не входящий в данный диапазон
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="item2"></param>
+        public void Export(DateTime item, DateTime item2)
+        {
+            int count = this.dateBase.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                if ()
+                {
+
+                }
+
+
+
+            }
+            
+
+
+
+
+
+
+
+            
+        }
+
         /// <summary>
         /// Метод удаления элемента списка по принимаемому индексу
         /// </summary>
