@@ -37,16 +37,71 @@ namespace _07_HW_GubinVS_2
         /// </summary>
         /// <param name="item"></param>
         /// <param name="item2"></param>
-        public void Export(DateTime item, DateTime item2)
+        public void Export(string item, string item2)
         {
-
-
-            this.dateBase.FindIndex(x => x.Date. (item) );
-
+            // Количество элементов в списке
+            int count = this.dateBase.Count;
             
 
+            // создание переменных в формате даты
+            DateTime one = Convert.ToDateTime(item);
+            DateTime two = Convert.ToDateTime(item2);
 
+            // Определение индекса верхней и нижней границы диапазона
+            int oneitem = this.dateBase.FindIndex(x => x.Date.ToString().Contains(item));
+            int twoitem = this.dateBase.FindIndex(x => x.Date.ToString().Contains(item2));
+
+            // сколько элементов переносится
+            int index = (twoitem-oneitem)+1;            
+
+            // Инициализация массива для заполнения его данными, которые деобходимо экспортировать
+            DataFields[] array = new DataFields[index];
+
+            // Заполнение массива данными структуры теми которые входят в диапазон значений
+            for (int i = 0; i < index; i++)
+            {
+                if (this.dateBase[i].Date >= one & this.dateBase[i].Date <= two)
+                {
+                    Console.Write(array[i].Date = this.dateBase[i].Date);
+                    Console.Write(array[i].Period = this.dateBase[i].Period);
+                    Console.Write(array[i].Cold = this.dateBase[i].Cold);
+                    Console.Write(array[i].Hotter = this.dateBase[i].Hotter);
+                    Console.WriteLine();
+                    
+                }
+    
+            }
+
+            //this.dateBase.Clear();
             
+
+            for (int i = 0; i < index; i++)
+            {
+                Console.Write($"{array[i].Period}\n");
+            }
+
+
+
+
+            //// Заполнение списка из массива DataFields[]
+            for (int i = 0; i < index; i++)
+            {
+
+                this.dateBase.Add(
+                        new DataFields()
+                            {
+                                Date = array[i].Date,
+                                Period = array[i].Period,
+                                Cold = array[i].Cold,
+                                Hotter = array[i].Hotter,
+                                TotalCold = 0,
+                                TotalHotter = 0
+
+                            }
+                );
+            }
+
+
         }
 
         /// <summary>
@@ -130,7 +185,7 @@ namespace _07_HW_GubinVS_2
             // Очистка базы данных
             this.dateBase.Clear();
 
-            // Заполнение базы скопированными данными
+            // Заполнение списка из массива DataFields[]
             for (int i = 0; i < count; i++)
             {
                 if (i==0)
