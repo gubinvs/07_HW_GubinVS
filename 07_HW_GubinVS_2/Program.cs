@@ -29,11 +29,15 @@ namespace _07_HW_GubinVS_2
             //string path = InputPath();
             //Menu(path);
 
+            //Режим Экспорт записей по выбранному диапазону дат. ExportData()
 
-            RemoveData(path);
 
             Console.ReadKey();
         }
+
+
+
+
 
 
 
@@ -88,7 +92,7 @@ namespace _07_HW_GubinVS_2
                         break;
                     case 5:
                         #region Режим просмотра данных      
-
+                            ReadData(path);
                         #endregion Режим просмотра данных   
                         break;
                     case 6:
@@ -114,6 +118,25 @@ namespace _07_HW_GubinVS_2
 
 
 
+
+        /// <summary>
+        /// Метод считывающий из файла данные и выводящий результат в консоль
+        /// </summary>
+        /// <param name="path"></param>
+        private static void ReadData(string path)
+        {
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
+
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
+
+            // Вывод существующих данных в консоль
+            db.Print();
+        }
 
 
         /// <summary>
