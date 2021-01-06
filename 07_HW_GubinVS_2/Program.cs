@@ -29,6 +29,32 @@ namespace _07_HW_GubinVS_2
             //string path = InputPath();
             //Menu(path);
 
+            /// Сортировка данных по выбранному полю
+
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
+
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
+
+            // SortData()
+
+            db.SortData();
+
+
+
+
+            // Вывод существующих данных в консоль
+            db.Print();
+
+
+
+
+
+
 
 
             Console.ReadKey();

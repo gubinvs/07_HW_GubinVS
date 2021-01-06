@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace _07_HW_GubinVS_2
     /// Структура содержащая список структурированных данных
     /// о показаниях приборов учета водоснабжения
     /// </summary>
-    struct DataBase
+    struct DataBase 
     {
         /// <summary>
         /// Список структур DataFields
@@ -31,6 +32,19 @@ namespace _07_HW_GubinVS_2
 
 
 
+
+
+
+        /// <summary>
+        ///  Метод сортировки данных по выбранному полю
+        /// </summary>
+
+        public void SortData()
+        {
+            this.dateBase.Sort();
+            
+        
+        }
 
         /// <summary>
         /// Метод принимающий диапазон дат и удаляет все элементы списка не входящий в данный диапазон
@@ -410,5 +424,7 @@ namespace _07_HW_GubinVS_2
 
             }
         }
+
+
     }
 }
