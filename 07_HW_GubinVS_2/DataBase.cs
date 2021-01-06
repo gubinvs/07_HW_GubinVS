@@ -11,7 +11,7 @@ namespace _07_HW_GubinVS_2
     /// Структура содержащая список структурированных данных
     /// о показаниях приборов учета водоснабжения
     /// </summary>
-    struct DataBase 
+    struct DataBase
     {
         /// <summary>
         /// Список структур DataFields
