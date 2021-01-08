@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -25,14 +26,28 @@ namespace _07_HW_GubinVS_2
         /// <param name="path">Путь к файлу с данными</param>
         public DataBase(string path)
         {
-            this.dateBase= new List<DataFields>(3);
+            this.dateBase = new List<DataFields>(3);
         }
 
 
 
 
 
+        /// <summary>
+        /// Метод сортировки базы данных по полю потребления (ХВС)
+        /// </summary>
+        public void SortTotalCold()
+        {
+            this.dateBase.Sort(new TotalColdComparer());
+        }
 
+        /// <summary>
+        /// Метод сортировки базы данных по полю потребления (ГВС)
+        /// </summary>
+        public void SortTotalHotter()
+        {
+            this.dateBase.Sort(new TotalHotterComparer());
+        }
 
 
 

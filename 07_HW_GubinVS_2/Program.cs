@@ -27,50 +27,10 @@ namespace _07_HW_GubinVS_2
         {
             string path = @"C:\07_HW_GubinVS_2\data.csv";
             //string path = InputPath();
-            //Menu(path);
-
-            /// Сортировка данных по выбранному полю
-
-            // Инициализация экземпляра структуры данных
-            DataBase db = new DataBase(path);
-
-            // Вывод заголовка таблицы в консоль
-            PrintHeading();
-
-            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
-            db.ReadFile(path);
-
-           
-
-       
-
-
-
-
-            // Вывод существующих данных в консоль
-            db.Print();
-
-
-
-
-
-
-
+            Menu(path);
 
             Console.ReadKey();
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -130,8 +90,7 @@ namespace _07_HW_GubinVS_2
                         break;
                     case 7:
                         #region Сортировка данных по выбранному полю
-
-
+                            SortItemForFields(path);
                         #endregion Сортировка данных по выбранному полю
                         break;
                     default:
@@ -143,6 +102,42 @@ namespace _07_HW_GubinVS_2
 
         }
 
+        /// <summary>
+        ///  Метод сортировки данных по выбранному полю
+        /// </summary>
+        /// <param name="path"></param>
+        private static void SortItemForFields(string path)
+        {
+            // Инициализация экземпляра структуры данных
+            DataBase db = new DataBase(path);
+            Print("Исходные данные:");
+            // Вывод заголовка таблицы в консоль
+            PrintHeading();
+
+            // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
+            db.ReadFile(path);
+
+            db.Print();
+
+            Print("Отсортировать по: \n 1. Потреблению (ХВС) \n 2. По потреблению (ГВС)");
+            switch (Convert.ToInt32(Console.ReadLine()))
+            {
+                case 1:
+                    db.SortTotalCold();
+                    break;
+                case 2:
+                    db.SortTotalHotter();
+                    break;
+                default:
+                    Print("Нет такой цыфры в меню!");
+                    break;
+            }
+
+            // Вывод существующих данных в консоль
+            Print("\nОтсортированные данные:");
+            PrintHeading();
+            db.Print();
+        }
 
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace _07_HW_GubinVS_2
 {
@@ -9,7 +10,7 @@ namespace _07_HW_GubinVS_2
     /// Структура содержит поля базы данных
     /// </summary>
     
-    struct DataFields
+    struct DataFields : IComparable<DataFields>
     {
         
         /// <summary>
@@ -42,9 +43,20 @@ namespace _07_HW_GubinVS_2
         /// </summary>
         public int TotalHotter { get; set; }
 
-
-
-
-
+        public int CompareTo([AllowNull] DataFields other)
+        {
+            if (other.TotalCold < this.TotalCold)
+            {
+                return -1;
+            }
+            else if (other.TotalCold > this.TotalCold)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
