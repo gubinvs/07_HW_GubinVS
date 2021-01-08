@@ -40,9 +40,9 @@ namespace _07_HW_GubinVS_2
             // Cчитывание данных из файла (для того, чтобы показать что есть в базе)
             db.ReadFile(path);
 
-            // SortData()
+           
 
-            db.SortData();
+       
 
 
 
